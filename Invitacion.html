@@ -527,7 +527,7 @@ body {
       .spotify-track { max-width: 99vw; }
       .numero-confirmacion { font-size: 1rem; }
     }
-    #btn-musica {
+   #btn-musica {
   position: fixed;
   top: 24px;
   left: 50px;
@@ -546,9 +546,21 @@ body {
   z-index: 9999;
   transition: transform 0.2s ease, background 0.3s;
 }
+
 #btn-musica:hover {
   transform: scale(1.1);
   background: linear-gradient(135deg, #b39144, #c1a05b);
+}
+
+/* 👇 Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+  #btn-musica {
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
 }
 
 
