@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XV Años de Marifer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-image: url('fondo_invitacion.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Playfair Display', serif;
+      color: #d4af37;
+      text-align: center;
+    }
+
+    .curva-texto {
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 20px;
+      animation: glow 2.5s ease-in-out infinite alternate;
+    }
+
+    .curva-texto text {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      fill: #d4af37;
+    }
+
+    @keyframes glow {
+      0% {
+        filter: drop-shadow(0 0 2px #d4af37);
+      }
+      100% {
+        filter: drop-shadow(0 0 10px #d4af37);
+      }
+    }
+
+    .nombre-central {
+      font-size: 3.5rem;
+      font-family: 'Great Vibes', cursive;
+      margin-bottom: 20px;
+      animation: shimmer 2.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes shimmer {
+      0% {
+        text-shadow: 0 0 3px #d4af37;
+      }
+      100% {
+        text-shadow: 0 0 15px #d4af37;
+      }
+    }
+
+    .icono-corona {
+      width: 90px;
+      height: auto;
+      margin: 15px auto;
+      display: block;
+      border-radius: 50%;
+      background-color: #fdf6e4;
+      padding: 10px;
+      box-shadow: 0 0 10px #d4af37aa;
+      animation: coronaPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes coronaPulse {
+      0% {
+        box-shadow: 0 0 5px #d4af37aa;
+      }
+      50% {
+        box-shadow: 0 0 20px #d4af37;
+      }
+      100% {
+        box-shadow: 0 0 5px #d4af37aa;
+      }
+    }
+
+    .boton-continuar {
+      margin-top: 30px;
+      background-color: #d4af37;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .boton-continuar:hover {
+      background-color: #c9a033;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Texto superior curvo con SVG -->
+  <svg class="curva-texto" viewBox="0 0 500 100">
+    <path id="curve" d="M 50,100 A 200,200 0 0,1 450,100" fill="transparent"/>
+    <text width="500">
+      <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle">
+        XV AÑOS DE MARIFER
+      </textPath>
+    </text>
+  </svg>
+
+  <!-- Imagen -->
+  <img src="corona-dorada.png.png" alt="Corona Dorada" class="icono-corona" />
+
+  <!-- Nombre -->
+  <div class="nombre-central">Dana Sofía</div>
+
+  <!-- Botón -->
+  <button class="boton-continuar" onclick="entrar()">Entrar a la invitación</button>
+
+  <script>
+    function entrar() {
+      window.location.href = 'Invitacion.html';
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación XV Años</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dorado: #c1a05b;
+      --dorado-oscuro: #a68d4b;
+      --blanco: #fff;
+      --negro: #111;
+    }
+    html, body {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Playfair Display', serif;
+  background: var(--blanco);
+  color: var(--dorado);
+  box-sizing: border-box;
+}
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 0.1s;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: none;}
+    }
+    .seccion {
+      min-height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 12px;
+      background: var(--blanco);
+      box-sizing: border-box;
+    }
+    /* PORTADA */
+    .portada {
+      position: relative;
+      min-height: 110vh;
+      background-image: url('Imagenes_Prueba/foto 7.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
+    .portada::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.18);
+      z-index: 1;
+    }
+    .portada-content {
+      position: absolute;
+      top: 36px;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 0;
+      padding: 0 10px;
+      pointer-events: none;
+    }
+    @media (max-width: 700px) {
+      .portada-content { top: 14px; }
+      .titulo-principal { font-size: 1.5rem; }
+    }
+    .titulo-principal, .cuenta-titulo, .evento-titulo, .seccion-titulo, .subtitulo, .fecha-principal {
+      background: linear-gradient(90deg, #fffbe9 0%, #c1a05b 35%, #b39144 60%, #fffbe9 100%);
+      background-size: 200% auto;
+      color: transparent !important;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmerGold 2.5s linear infinite, fadeZoomIn 1.1s cubic-bezier(0.3,0.7,0.4,1.1) both;
+      position: relative;
+      text-shadow:
+        0 2px 10px #c1a05b55,
+        0 4px 24px #fffbe9b3,
+        0 0px 1px #b39144cc;
+      filter: drop-shadow(0 2px 4px #fff9cc33);
+      letter-spacing: 1.5px;
+      font-family: 'Playfair Display', serif !important;
+      font-weight: bold;
+      text-align: center;
+    }
+    @keyframes shimmerGold {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    @keyframes fadeZoomIn {
+      from { opacity: 0; transform: scale(0.94) translateY(25px);}
+      to { opacity: 1; transform: scale(1) translateY(0);}
+    }
+    .subtitulo, .fecha-principal { overflow: visible; }
+    .subtitulo::after, .fecha-principal::after {
+      content: '';
+      position: absolute;
+      left: -20%;
+      top: 45%;
+      width: 140%;
+      height: 35%;
+      pointer-events: none;
+      background: linear-gradient(90deg, transparent, #fffbe999 60%, transparent 100%);
+      opacity: 0.5;
+      transform: skewX(-20deg);
+      animation: destello 4.2s linear infinite;
+    }
+    @keyframes destello {
+      0% { left: -100%; opacity: 0.2;}
+      50% { left: 100%; opacity: 0.9;}
+      100% { left: 120%; opacity: 0.2;}
+    }
+    .titulo-principal { font-size: 2.6rem; animation-delay: 0.3s;}
+    .subtitulo { font-size: 1.5rem; animation-delay: 0.6s;}
+    .fecha-principal { font-size: 1.2rem; animation-delay: 0.9s;}
+    /* --- TARJETA DE EVENTO CON RELOJ --- */
+    .evento-fiesta-section {
+      min-height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: var(--blanco);
+      position: relative;
+      background-image: url('foto fondo dorado 1.0.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    .cuenta-titulo {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+      font-weight: 700;
+      text-align: center;
+    }
+    #countdown {
+      font-size: 1.3rem;
+      color: var(--dorado);
+      font-weight: bold;
+      margin-bottom: 30px;
+      text-align: center;
+      text-shadow: 0 1px 6px #e0c47d99;
+    }
+    .evento-tarjeta {
+      background: var(--blanco);
+      border-radius: 25px;
+      box-shadow: 0 4px 38px #0002, 0 2px 10px #a89e8e12;
+      border: 2.2px solid var(--negro);
+      padding: 50px 40px 42px 40px;
+      margin: 12px 0 0 0;
+      max-width: 540px;
+      min-height: 470px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      font-size: 1.13rem;
+    }
+    .evento-titulo {
+      font-size: 1.33rem;
+      margin-bottom: 16px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+    .iconos-evento {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 10px;
+    }
+    .icon-svg {
+      width: 44px;
+      height: 44px;
+      display: inline-block;
+    }
+    .evento-dato {
+      color: var(--dorado);
+      text-shadow: 0 1px 8px #b3914444;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .evento-dato b {
+      font-weight: bold;
+      color: var(--dorado-oscuro);
+      letter-spacing: 1px;
+    }
+    .evento-dir-titulo {
+      font-size: 1rem;
+      margin: 18px 0 5px 0;
+      letter-spacing: 1px;
+      font-weight: bold;
+      color: var(--dorado-oscuro);
+    }
+    .evento-direccion {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--dorado);
+    }
+    .ruta-btn {
+      background: linear-gradient(90deg, #c1a05b 60%, #f9e7c4 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 11px 29px;
+      font-size: 1.08rem;
+      cursor: pointer;
+      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 2px 10px #b3914444;
+      transition: background .2s, box-shadow .2s;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 8px #b3914444;
+      border: 1px solid var(--dorado);
+    }
+    .ruta-btn:hover {
+      background: linear-gradient(90deg, #f1c97b 40%, #c1a05b 100%);
+      box-shadow: 0 4px 18px #b3914455;
+    }
+    .icon-svg svg text, .icon-svg svg line, .icon-svg svg circle {
+      stroke: var(--dorado);
+      fill: var(--dorado);
+    }
+    .icon-svg svg line#hora { stroke: var(--dorado-oscuro); }
+    .icon-svg svg line#minuto { stroke: var(--dorado); }
+    .icon-svg svg circle#centro { fill: var(--dorado-oscuro);}
+    @media (max-width: 700px) {
+      .portada-content { top: 14px; }
+      .titulo-principal { font-size: 1.5rem; }
+      .cuenta-titulo { font-size: 1.25rem; }
+      .evento-tarjeta { padding: 22px 5vw 15px 5vw; max-width:98vw; }
+    }
+    /* GALERÍA CARRUSEL */
+    .galeria {
+      background-image: url('foto fondo dorado 1.0.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #fffefb;
+    }
+    .galeria-carrusel {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0 65px 0;
+      overflow-x: auto;
+      user-select: none;
+    }
+    .carrusel {
+      display: flex;
+      gap: 28px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 16px;
+    }
+    .carrusel-img {
+      width: 340px;
+      height: 255px;
+      object-fit: cover;
+      border-radius: 28px;
+      box-shadow: 0 8px 36px #b3914442;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(.25,.8,.25,1), box-shadow 0.3s;
+      scroll-snap-align: center;
+      background: #e6dbc0;
+      border: 2.2px solid #fffbe9;
+    }
+    .carrusel-img:hover {
+      transform: scale(1.09) rotate(-2deg);
+      box-shadow: 0 14px 60px #c1a05b99;
+      z-index: 2;
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 5000;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(20,15,3,0.88);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transition: background 0.3s;
+    }
+    .lightbox.show {
+      display: flex;
+      animation: lightboxFadeIn 0.33s cubic-bezier(.25,.8,.25,1);
+    }
+    @keyframes lightboxFadeIn {
+      from { opacity: 0; } to { opacity: 1;}
+    }
+    .lightbox-img {
+      max-width: 98vw;
+      max-height: 93vh;
+      border-radius: 22px;
+      box-shadow: 0 14px 64px #c1a05bcc;
+      animation: imgZoom 0.37s cubic-bezier(.23,.9,.23,1.1);
+      background: #fff;
+    }
+    @keyframes imgZoom {
+      from { transform: scale(0.86); opacity: 0.5;}
+      to { transform: scale(1); opacity: 1;}
+    }
+    .lightbox .close {
+      position: absolute;
+      top: 36px;
+      right: 50px;
+      color: #fffbe9;
+      font-size: 2.7rem;
+      cursor: pointer;
+      transition: color 0.2s;
+      z-index: 10;
+      text-shadow: 0 2px 18px #c1a05b;
+      background: transparent;
+      border: none;
+    }
+    .lightbox .close:hover { color: #c1a05b; }
+    .lightbox .prev, .lightbox .next {
+      position: absolute;
+      top: 50%;
+      font-size: 3.5rem;
+      color: #fffbe9;
+      cursor: pointer;
+      user-select: none;
+      z-index: 10;
+      padding: 0 18px;
+      border-radius: 18px;
+      background: linear-gradient(90deg, #c1a05b77, transparent 90%);
+      transform: translateY(-50%);
+      transition: background 0.2s;
+    }
+    .lightbox .prev { left: 10px; }
+    .lightbox .next { right: 10px; background: linear-gradient(90deg, transparent 10%, #c1a05b77);}
+    .lightbox .prev:hover, .lightbox .next:hover { background: #c1a05b; color: #fff; }
+    @media (max-width: 1100px) {
+      .carrusel-img { width: 75vw; height: 45vw; min-width: 180px; }
+    }
+    @media (max-width: 800px) {
+      .carrusel-img { width: 97vw; height: 63vw; min-width: 125px;}
+      .lightbox-img { max-width: 99vw; max-height: 70vh; }
+    }
+    @media (max-width: 600px) {
+      .carrusel-img { width: 99vw; height: 74vw; min-width: 105px;}
+      .lightbox-img { max-width: 100vw; max-height: 64vh; }
+      .lightbox .close { font-size: 2rem; right: 18px; top: 18px; }
+      .lightbox .prev, .lightbox .next { font-size: 2.5rem; padding: 0 8px;}
+    }
+    /* DRESSCODE ELEGANTE */
+    .dresscode-elegante {
+      background: #faf8f4 url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+      min-height: 100vh;
+      padding: 50px 18px 60px 18px;
+      display: flex; flex-direction: column; align-items: center;
+      width: 100vw;
+    }
+    .dc-titulo {
+      display: flex; flex-direction: column; align-items: center;
+      letter-spacing: 0.07em;
+      margin-bottom: 8px;
+    }
+    .dc-titulo span { font-family: 'Playfair Display', serif; color: #23221c; font-size: 1.07rem; }
+    .dc-titulo-script {
+      font-family: 'Dancing Script', 'Playfair Display', cursive;
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: #23221c;
+      letter-spacing: 1px;
+      margin-top: -4px;
+      margin-bottom: 6px;
+      line-height: 1.1;
+    }
+    .dc-sep {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 18px;
+    }
+    .dc-line {
+      display: block; height: 1.6px; width: 70px; background: #b8af97;
+    }
+    .dc-ico-copa { display: flex; align-items: center; }
+    .dc-frase {
+      font-family: 'Playfair Display', serif;
+      color: #353232;
+      font-size: 1.18rem;
+      margin-bottom: 38px;
+      text-align: center;
+      line-height: 1.33;
+      max-width: 540px;
+    }
+    .dc-carrusel { width: 100%; max-width: 510px; margin: 0 auto; position: relative; }
+    .dc-opcion {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      animation: fadein 0.55s;
+      min-height: 300px;
+    }
+    .dc-opcion.active { display: flex; }
+    @keyframes fadein { from {opacity: 0;} to {opacity: 1;} }
+    .dc-icon-svg { margin-bottom: 8px; }
+    .dc-rol {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.07em;
+      font-weight: 700;
+      color: #242424;
+      margin-bottom: 7px;
+    }
+    .dc-etiqueta {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.08rem;
+      color: #7b7551;
+      margin-bottom: 18px;
+      line-height: 1.4;
+      max-width: 400px;
+      margin-left:auto; margin-right:auto;
+    }
+    .dc-puntos { display: flex; gap: 7px; justify-content: center; margin-top: 3px; }
+    .dc-punto {
+      display: inline-block;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: #dad7c3;
+      border: 1.5px solid #b8af97;
+      transition: background .2s;
+      cursor: pointer;
+    }
+    .dc-punto.active { background: #ab9565; border-color: #ab9565; }
+    @media (max-width: 600px) {
+      .dresscode-elegante { padding: 36px 4vw 36px 4vw; }
+      .dc-titulo-script { font-size: 1.7rem; }
+      .dc-line { width: 34px; }
+      .dc-frase { font-size: 1.05rem; }
+      .dc-carrusel { max-width: 98vw; }
+      .dc-opcion { min-height: 200px; }
+    }
+
+    /* ESTILO EXTRA FRASE Y NUMERO DE CONFIRMACION */
+     .seccion.confirmacion {
+
+      min-height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: var(--blanco);
+      position: relative;
+      background-image: url('foto fondo dorado 1.0.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    .frase-invitacion {
+      color: #2c2c2c;
+      font-size: 1.18rem;
+      text-align: center;
+      background: #fff8e6;
+      border-radius: 18px;
+      padding: 18px 14px 16px 14px;
+      margin: 0 auto 22px auto;
+      max-width: 430px;
+      box-shadow: 0 2px 14px #b3914430;
+      font-family: 'Playfair Display', serif;
+      line-height: 1.37;
+    }
+    .frase-invitacion .icon-f {
+      color: #c1a05b;
+      font-size: 1.3rem;
+      margin-right: 7px;
+    }
+    .numero-confirmacion {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 12px auto 0 auto;
+      gap: 7px;
+      font-size: 1.13rem;
+      color: #a68d4b;
+      font-weight: bold;
+      font-family: 'Playfair Display', serif;
+    }
+    .numero-confirmacion .icon-num {
+      color: #d2b461;
+      font-size: 1.25rem;
+      margin-right: 6px;
+    }
+    .numero-confirmacion a {
+      color: #b39144;
+      text-decoration: underline;
+      font-weight: bold;
+      transition: color .17s;
+    }
+    .numero-confirmacion a:hover {
+      color: #c1a05b;
+    }
+    
+  
+    @media (max-width: 500px) {
+      .frase-invitacion { font-size: 1rem; padding: 12px 4vw; }
+      .spotify-track { max-width: 99vw; }
+      .numero-confirmacion { font-size: 1rem; }
+    }
+    #btn-musica {
+  position: fixed;
+  top: 24px;
+  left: 50px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c1a05b, #b39144);
+  color: rgb(0, 0, 0);
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: 0 4px 18px #00000030;
+  cursor: pointer;
+  z-index: 9999;
+  transition: transform 0.2s ease, background 0.3s;
+}
+#btn-musica:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #b39144, #c1a05b);
+}
+
+
+  </style>
+</head>
+<body class="fade-in">
+  <!-- Botón de música y audio -->
+ <button id="btn-musica" onclick="toggleMusica()">🎵 Reprodúceme</button>
+ <audio id="musica" src="Girls Like You.mp3" loop></audio>
+
+
+  <!-- 1. PORTADA -->
+  <div class="seccion portada">
+    <div class="portada-content">
+      <h1 class="titulo-principal">Dana Sofía</h1>
+      <p class="subtitulo">Mis XV años</p>
+      <p class="fecha-principal">16 de noviembre 2025</p>
+    </div>
+  </div>
+
+  <!-- 2. CUENTA REGRESIVA + DATOS DE LA FIESTA EN TARJETA -->
+  <div class="seccion evento-fiesta-section">
+    <div>
+      <div class="cuenta-titulo">Cuenta regresiva</div>
+      <div id="countdown"></div>
+    </div>
+    <div class="evento-tarjeta">
+      <div class="evento-titulo">16 de Noviembre 2025</div>
+      <div class="iconos-evento">
+        <!-- Reloj SVG Animado -->
+        <span class="icon-svg">
+          <svg id="svgReloj" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="27" stroke="#111" stroke-width="2" fill="none"/>
+            <line id="hora" x1="30" y1="30" x2="30" y2="16" stroke="#a68d4b" stroke-width="3" stroke-linecap="round"/>
+            <line id="minuto" x1="30" y1="30" x2="45" y2="30" stroke="#c1a05b" stroke-width="2" stroke-linecap="round"/>
+            <circle id="centro" cx="30" cy="30" r="2" fill="#a68d4b"/>
+          </svg>
+        </span>
+      </div>
+      <div class="evento-dato"><b>Nombre:</b> Dana Sofía Diaz Alvarado</div>
+      <div class="evento-dato"><b>Padres:</b> Iván Alejandro Díaz Mendoza y Sonia Alvarado Muñoz</div>
+      <div class="evento-dato"><b>Padrinos:</b> Raymundo Díaz Ávalos y Manuela Elvira Mendoza Lupercio</div>
+      <div class="evento-dato"><b>Hora:</b> 6:30 PM</div>
+      <div class="evento-dato"><b>Misa:</b> Templo de Guadalupe, 5:00 PM</div>
+      <div class="evento-dato"><b>Recepción y Fiesta:</b> 6:30 PM</div>
+      <div class="evento-dir-titulo">Dirección</div>
+      <div class="evento-direccion">Tendeza-Terraza/Jardin</div>
+      <button class="ruta-btn" onclick="abrirUbicacion()">
+        <svg width="16" height="16" viewBox="0 0 16 16"><path fill="#fff" d="M2.5 13.5L13.5 2.5M13.5 2.5V9.5M13.5 2.5H6.5"/></svg>
+        Ruta Salón
+      </button>
+    </div>
+  </div>
+
+  <!-- 3. GALERÍA (Carrusel de 7 imágenes) -->
+  <div class="seccion galeria">
+    <h2 class="seccion-titulo">Galería</h2>
+    <div class="galeria-carrusel">
+      <div class="carrusel">
+        <img src="Imagenes_Prueba/foto 1 .jpg" alt="Foto 1" class="carrusel-img">
+        <img src="Imagenes_Prueba/foto 2 .jpg" alt="Foto 2" class="carrusel-img">
+        <img src="Imagenes_Prueba/foto 3 .jpg" alt="Foto 3" class="carrusel-img">
+        <img src="Imagenes_Prueba/foto 4 .jpg" alt="Foto 4" class="carrusel-img">
+        <img src="Imagenes_Prueba/foto 5 .jpg" alt="Foto 5" class="carrusel-img">
+        <img src="Imagenes_Prueba/foto 6 portada .jpg" alt="Foto 6" class="carrusel-img">
+        <img src="Imagenes_Prueba/foto 7.jpg" alt="Foto 7" class="carrusel-img">
+      </div>
+    </div>
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+      <span class="close">&times;</span>
+      <img class="lightbox-img" src="" alt="">
+      <a class="prev">&#10094;</a>
+      <a class="next">&#10095;</a>
+    </div>
+  </div>
+
+  <!-- Dresscode NUEVO ELEGANTE -->
+  <div class="seccion dresscode-elegante" id="dresscode">
+    <div class="dc-titulo">
+      <span>CÓDIGO DE</span>
+      <span class="dc-titulo-script">Vestimenta</span>
+    </div>
+    <div class="dc-sep">
+      <span class="dc-line"></span>
+      <span class="dc-ico-copa">
+        <svg width="28" height="40" viewBox="0 0 28 40" fill="none">
+          <ellipse cx="14" cy="13" rx="9" ry="11" stroke="#ab9565" stroke-width="2"/>
+          <path d="M14 24V36" stroke="#ab9565" stroke-width="2" stroke-linecap="round"/>
+          <path d="M9 36H19" stroke="#ab9565" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="dc-line"></span>
+    </div>
+    <div class="dc-frase">
+      En este día tan especial lo más valioso es tu compañía,<br>
+      luce tu mejor atuendo y disfruta con nosotros.
+    </div>
+    <div class="dc-carrusel">
+      <!-- Hombres -->
+      <div class="dc-opcion active" id="dc-hombres">
+       
+          <img src="TRAJE GOD.png" alt="Icono hombres" style="width:200px;height:130px;object-fit:contain;">
+        </span>
+        <div class="dc-rol">HOMBRES</div>
+        <div class="dc-etiqueta">
+          <b>Etiqueta:</b> Camisa y pantalón de vestir <span style="color:#b3a36a;">(no jeans)
+        </div>
+      </div>
+      <!-- Damas -->
+     <div class="dc-opcion" id="dc-hombres">
+       
+          <img src="Vestido png.png" alt="Icono hombres" style="width:200px;height:130px;object-fit:contain;">
+        </span>
+        <div class="dc-rol">MUJERES</div>
+        <div class="dc-etiqueta">
+          <b>Etiqueta:</b> Vestido largo o de gala <span style="color:#b3a36a;">(no corto)</span>
+        </div>
+      </div>
+      <!-- Puntitos de navegación -->
+      <div class="dc-puntos">
+        <span class="dc-punto active"></span>
+        <span class="dc-punto"></span>
+      </div>
+    </div>
+    <div class="dresscode-gracias" style="margin-top:30px; color:#a6986e; font-size:1.06rem;">
+      ¡Gracias por respetar el código de vestimenta y ser parte de este gran momento!
+    </div>
+  </div>
+
+  <!-- 4. CONFIRMAR ASISTENCIA -->
+  <div class="seccion confirmacion">
+
+    <h2 class="seccion-titulo">Confirmar asistencia</h2>
+    
+    <!-- Frase especial y número arriba del botón -->
+    <div class="frase-invitacion">
+      
+      Hay eventos en la vida que son muy especiales por sí solos, pero poder compartirlos con quien más quiero los hace inolvidables.<br><br>
+      ¡Te espero en mi fiesta!
+    </div>
+    
+    
+    <!-- Botón de WhatsApp -->
+    <button onclick="confirmarAsistencia()" class="ruta-btn">
+      <svg width="16" height="16" viewBox="0 0 16 16"><path fill="#fff" d="M2.5 13.5L13.5 2.5M13.5 2.5V9.5M13.5 2.5H6.5"/></svg>
+      Confirmar por WhatsApp
+    </button>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+   function confirmarAsistencia() {
+  const telefono = "4491859345";
+  const mensaje = "¡Hola! Confirmo mi asistencia a los XV de Dana Sofía 🎉";
+  const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, "_blank");
+}
+
+    // Ruta Salón
+    function abrirUbicacion() {
+      var enlace = "https://maps.app.goo.gl/5ToW5dTpLg7MZPbr7?g_st=iw";
+      window.open(enlace, '_blank');
+    }
+    // Cuenta regresiva
+    function countdown() {
+      const fechaEvento = new Date("2025-11-16T18:30:00");
+      const now = new Date();
+      const diff = fechaEvento - now;
+      if(diff <= 0) {
+        document.getElementById('countdown').innerHTML = "¡Ya comenzó la fiesta!";
+        return;
+      }
+      const dias = Math.floor(diff / (1000*60*60*24));
+      const horas = Math.floor((diff / (1000*60*60)) % 24);
+      const mins = Math.floor((diff / (1000*60)) % 60);
+      const segs = Math.floor((diff / 1000) % 60);
+      document.getElementById('countdown').innerHTML =
+        dias + " días, " +
+        horas + " hrs, " +
+        mins + " min, " +
+        segs + " seg";
+    }
+    setInterval(countdown, 1000);
+    countdown();
+    // Animación de reloj SVG a las 6:30 PM
+    function setRelojSVG(h, m) {
+      let hora = document.getElementById("hora");
+      let minuto = document.getElementById("minuto");
+      let angHora = ((h % 12) + m/60) * 30; // 30 grados por hora
+      let angMin = m * 6;
+      hora.setAttribute("transform", `rotate(${angHora} 30 30)`);
+      minuto.setAttribute("transform", `rotate(${angMin} 30 30)`);
+    }
+    let minutoActual = 30;
+    setInterval(() => {
+      setRelojSVG(6, minutoActual % 60);
+      minutoActual += 1;
+    }, 120);
+
+    // ===== GALERÍA CARRUSEL/LIGHTBOX JS =====
+    const imgs = document.querySelectorAll('.carrusel-img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.querySelector('.lightbox-img');
+    const closeBtn = document.querySelector('.lightbox .close');
+    const prevBtn = document.querySelector('.lightbox .prev');
+    const nextBtn = document.querySelector('.lightbox .next');
+    let currIdx = 0;
+
+    function showLightbox(idx) {
+      currIdx = idx;
+      lightboxImg.src = imgs[idx].src;
+      lightbox.classList.add('show');
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('show');
+      setTimeout(() => { lightboxImg.src = ''; }, 220);
+    }
+    function showPrev() {
+      currIdx = (currIdx - 1 + imgs.length) % imgs.length;
+      showLightbox(currIdx);
+    }
+    function showNext() {
+      currIdx = (currIdx + 1) % imgs.length;
+      showLightbox(currIdx);
+    }
+    imgs.forEach((img, i) => {
+      img.addEventListener('click', () => showLightbox(i));
+    });
+    closeBtn.onclick = closeLightbox;
+    prevBtn.onclick = showPrev;
+    nextBtn.onclick = showNext;
+    lightbox.onclick = e => { if (e.target === lightbox) closeLightbox(); };
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('show')) return;
+      if (e.key === 'ArrowLeft') showPrev();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'Escape') closeLightbox();
+    });
+    // Swipe para el lightbox
+    let startX = 0, dragging = false;
+    function handleStart(e) {
+      dragging = true;
+      startX = e.touches ? e.touches[0].clientX : e.clientX;
+    }
+    function handleEnd(e) {
+      if (!dragging) return;
+      let endX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
+      let diff = endX - startX;
+      if (Math.abs(diff) > 35) {
+        if (diff < 0) showNext();
+        else showPrev();
+      }
+      dragging = false;
+    }
+    lightbox.addEventListener('touchstart', handleStart);
+    lightbox.addEventListener('touchend', handleEnd);
+    lightbox.addEventListener('mousedown', handleStart);
+    lightbox.addEventListener('mouseup', handleEnd);
+    // Para deslizar carrusel horizontal
+    const carrusel = document.querySelector('.carrusel');
+    let isDown = false, startX2, scrollLeft;
+    carrusel.addEventListener('mousedown', e => {
+      isDown = true;
+      carrusel.classList.add('grabbing');
+      startX2 = e.pageX - carrusel.offsetLeft;
+      scrollLeft = carrusel.scrollLeft;
+    });
+    carrusel.addEventListener('mouseleave', () => { isDown = false; carrusel.classList.remove('grabbing'); });
+    carrusel.addEventListener('mouseup', () => { isDown = false; carrusel.classList.remove('grabbing'); });
+    carrusel.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carrusel.offsetLeft;
+      const walk = (x - startX2) * 1.1;
+      carrusel.scrollLeft = scrollLeft - walk;
+    });
+    // touch para carrusel
+    let startX3, scrollLeft3;
+    carrusel.addEventListener('touchstart', e => {
+      startX3 = e.touches[0].pageX - carrusel.offsetLeft;
+      scrollLeft3 = carrusel.scrollLeft;
+    });
+    carrusel.addEventListener('touchmove', e => {
+      const x = e.touches[0].pageX - carrusel.offsetLeft;
+      carrusel.scrollLeft = scrollLeft3 - (x - startX3);
+    });
+
+    // ====== Dresscode elegante (puntitos, swipe, sin errores) ======
+    const dcOpciones = document.querySelectorAll('.dc-opcion');
+    const dcPuntos = document.querySelectorAll('.dc-punto');
+    let dcIdx = 0;
+    function showDcOpcion(idx) {
+      dcOpciones.forEach((el, i) => el.classList.toggle('active', i === idx));
+      dcPuntos.forEach((el, i) => el.classList.toggle('active', i === idx));
+      dcIdx = idx;
+    }
+    dcPuntos.forEach((btn, i) => btn.onclick = () => showDcOpcion(i));
+    // Swipe touch
+    let startDressX = null;
+    document.querySelector('.dc-carrusel').addEventListener('touchstart', e => {
+      startDressX = e.touches[0].clientX;
+    });
+    document.querySelector('.dc-carrusel').addEventListener('touchend', e => {
+      if (startDressX === null) return;
+      let endX = e.changedTouches[0].clientX;
+      let diff = endX - startDressX;
+      if (Math.abs(diff) > 40) {
+        if (diff < 0) showDcOpcion((dcIdx + 1) % dcOpciones.length);
+        else showDcOpcion((dcIdx - 1 + dcOpciones.length) % dcOpciones.length);
+      }
+      startDressX = null;
+    });
+    // Control de música
+const audio = document.getElementById('musica');
+const btn = document.getElementById('btn-musica');
+
+function toggleMusica() {
+  if (audio.paused) {
+    audio.play();
+    btn.textContent = "⏸️ Pausar música";
+  } else {
+    audio.pause();
+    btn.textContent = "🎵 Reprodúceme";
+  }
+}
+
+  </script>
+</body>
+</html>
