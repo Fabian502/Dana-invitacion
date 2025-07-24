@@ -530,7 +530,7 @@ body {
    #btn-musica {
   position: fixed;
   top: 24px;
-  left: 50px;
+  left: 20px;
   width: 54px;
   height: 54px;
   border-radius: 50%;
@@ -552,6 +552,21 @@ body {
   background: linear-gradient(135deg, #b39144, #c1a05b);
 }
 
+/* Estilos SOLO para pantallas pequeñas */
+@media (max-width: 600px) {
+  #btn-musica {
+    top: 12px;
+    left: 12px;
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+    padding: 0;
+  }
+
+  #btn-musica span {
+    display: none; /* Oculta el texto 'Pausar música' en móviles */
+  }
+}
 /* 👇 Ajustes para pantallas pequeñas */
 @media (max-width: 600px) {
   #btn-musica {
